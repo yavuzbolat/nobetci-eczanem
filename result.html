@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+
+     <title>En Yakın Eczaneler
+     </title>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+     <meta name="description" content="">
+     <meta name="keywords" content=" Nöbetçi eczane, gece açık eczane, hafta sonu açık eczane, gece nöbetçi eczane, eczane açık saatleri, nöbetçi eczaneler, gece eczane, nöbetçi eczane bul, gece açık eczane bul, hafta sonu açık eczane bul, gece nöbetçi eczane bul, nöbetçi eczane ara, gece açık eczane ara, hafta sonu açık eczane ara, gece nöbetçi eczane ara, gece hizmet veren eczane, hafta sonu hizmet veren eczane, gece açık eczane arama, hafta sonu açık eczane arama, nöbetçi eczane hizmetleri,Açık eczane, eczane açık saatleri, açık eczane bul, eczane açık saatleri bul, açık eczane arama, eczane açık saatleri arama, açık eczane hizmetleri, eczane açık saatleri hizmetleri, açık eczane ara, eczane açık saatleri ara, açık eczane bulma, eczane açık saatleri bulma, açık eczane adresleri, eczane açık saatleri adresleri, açık eczane telefonları ">
+     <meta name="author" content="Vought CMP">
+     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+     <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/magnific-popup.css">
+
+     <link rel="stylesheet" href="css/font-awesome.min.css">
+     <link rel="stylesheet" href="css/animate.css">
+
+     <link rel="stylesheet" href="css/owl.carousel.css">
+     <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+     <!-- MAIN CSS -->
+     <link rel="stylesheet" href="css/tooplate-style.css">
+     <script>
+          // Geolokasyon verilerini saklamak için bir nesne oluşturun
+          var geolocationData = {
+            latitude: null,
+            longitude: null
+          };
+          
+          // Geolokasyon verilerini almak için HTML5 geolocation özelliğini kullanın
+          navigator.geolocation.getCurrentPosition(function(position) {
+            // Geolokasyon verilerini nesne içinde saklayın
+            geolocationData.latitude = position.coords.latitude;
+            geolocationData.longitude = position.coords.longitude;
+          
+            // Geolokasyon verilerini sunucuya göndermek için bir istek oluşturun
+            var xhr = new XMLHttpRequest();
+            xhr.open('POST', '/algorithm.php', true);
+            xhr.setRequestHeader('Content-Type', 'application/x-www-form-url-encoded');
+            xhr.send('latitude='+ geolocationData.latitude + '&longitude='+ geolocationData.longitude);
+          });
+            </script>
+    <script>
+
+ xhr.onload = function() {
+ 
+    if (xhr.status === 200) {
+      var result_array = document.getElementById('results').innerHTML = JSON.parse(xhr.responseText);
+    } else {
+      document.getElementById('results').innerHTML = 'Error: Could not execute algorithm';
+    }
+let name1 = result_array[0];
+let name2 = result_array[1];
+let name3 = result_array[2];
+let loc1 = result_array[3];
+let loc2 = result_array[4];
+let loc3 = result_array[5];
+let loc_url1 = result_array[6];
+let loc_url2 = result_array[7];
+let loc_url3 = result_array[8];
+let phone1 = 'tel:' + result_array[9];
+let phone2 = 'tel:' + result_array[10];
+let phone3 ='tel:' + result_array[11];
+let distance1 = result_array[12];
+let distance2 = result_array[13];
+let distance3 = result_array[14];
+  };
+  xhr.onerror = function() {
+   };
+</script>
+</head>
+<body id="top" data-spy="scroll" data-target=".navbar-collapse" data-offset="50">
+
+     <!-- PRE LOADER -->
+     <section class="preloader">
+          <div class="spinner">
+
+               <span class="spinner-rotate"></span>
+               
+          </div>
+     </section>
+
+
+       <!-- HEADER -->
+       <header>
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-4 col-sm-5">
+                         <p>En Yakın Eczaneyi Anında Bulun!</p>
+                    </div>
+                   
+                    <div class="col-md-8 col-sm-7 text-align-right">
+                         <span class="phone-icon"><i class="fa fa-phone"></i>+90 500-000-0000</span>
+        
+               
+                    </div>
+
+               </div>
+          </div>
+     </header>
+
+
+     <!-- MENU+ -->
+     <section class="navbar navbar-default navbar-static-top" role="navigation">
+          <div class="container">
+
+               <div class="navbar-header">
+                    <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                         <span class="icon icon-bar"></span>
+                         <span class="icon icon-bar"></span>
+               
+                    </button>
+
+                    
+                    <a href="index.html" class="navbar-brand"><img
+                         src="/images/logo.png"
+                         height="28px"
+                         alt=""
+                         loading="lazy"
+                       /></a>
+               </div>
+               
+               <!-- MENU LINKS+ -->
+               <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                         <li><a href="/index.html" class="smoothScroll">Anasayfa</a></li>
+                         <li><a href="/index.html" class="smoothScroll">Nasıl Çalışır?</a></li>
+                         <li><a href="/index.html" class="smoothScroll">Bize Ulaşın</a></li>
+                         <li class="appointment-btn"><a href="/result.html">Semte Göre Eczane Bul!</a></li>
+                    </ul>
+               </div>
+
+          </div>
+     </section>
+    
+    <!---  Kutular -->
+     <div class="kutucuk">
+          <img src="images/eczane.png" alt="image1">
+          <h1 id="name1"></h1>
+          <p id="loc1"></p>
+          <button id="loc_url1" onclick="showAlert()"href="#">Google Adresi Al</button>
+          <button id="phone1">Telefon Et</button>
+          <div class="top-right" id="distance1"> km</div>
+          <a class="bottom-right" id="complaint"> Hata Bildir!</a>
+        </div>
+        <div class="kutucuk">
+          <img src="images/eczane.png" alt="image2">
+          <h1 id="name2"></h1>
+          <p id="loc2"></p>
+          <button  onclick="showAlert()" id="loc_url2" href="#">Google Adresi Al</button>
+          <button id="phone2" >Telefon Et</button>
+          <div class="top-right" id="distance2"> km</div>
+          <a class="bottom-right" id="complaint"> Hata Bildir!</a>
+        </div>
+        <div class="kutucuk">
+          <img src="images/eczane.png" alt="image3">
+          <h1 id="name3"></h1>
+          <p id="loc3"></p>
+          <button id="loc_url3" onclick="showAlert()" href="#">Google Adresi Al</button>
+          <button id="phone3">Telefon Et</button>
+          <div class="top-right" id="distance3">7 km</div>
+          <a class="bottom-right" id="complaint"> Hata Bildir!</a>
+        </div>
+        
+
+        
+     <!-- NEWS DETAIL -->
+     <section id="news-detail" data-stellar-background-ratio="0.5">
+          <div class="container">
+               <div class="row">
+
+                                    
+                    
+                    <div class="col-md-4 col-sm-5">
+                         <div class="news-sidebar">
+                        
+
+                              <div class="recent-post">
+                                   <h4>Reklam</h4>
+                    </div>
+               </div>
+          </div>
+       
+
+             
+
+<!-- Footer+ -->
+     <footer style="background: linear-gradient(to top, #f1f0f0, #fff9f9fa);"  data-stellar-background-ratio="4">
+          <div class="container">
+               <div class="row">
+
+                    <div class="col-md-4 col-sm-4">
+                         <div class="footer-thumb"> 
+                              <h4 class="wow fadeInUp" data-wow-delay="0.4s">Hakkımızda</h4>
+                              <p>Eczanemnerede.com makine öğrenmesiyle çalışır.Sizlere gösterdiğimiz sonuçların yanlışlık payı olduğunu unutmayın. Eczaneye gitmeden önce kesinlikle arayarak gidin.</p>
+
+                              <div class="contact-info">
+                                   <p><i class="fa fa-phone"></i> 500 000 0000</p>
+                                   <p><i class="fa fa-envelope-o"></i> <a href="#">info@eczanobetci.com</a></p>
+                              </div>
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4"> 
+                         <div class="footer-thumb"> 
+                             
+                         </div>
+                    </div>
+
+                    <div class="col-md-4 col-sm-4"> 
+                         <div class="footer-thumb">
+                          
+                             
+                         </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 border-top">
+                         <div class="col-md-4 col-sm-6">
+                              <div class="copyright-text"> 
+                                   <p>Copyright &copy; 2022 Eczanemnerede 
+                                   
+                                   | Design: <a rel="nofollow" href="#" target="_parent">Vought CMP</a></p>
+                              </div>
+                         </div>
+                         <div class="col-md-6 col-sm-6">
+                              <div class="footer-link"> 
+                                   <a href="#">Kullanıcı Sözleşmesi</a>
+                                   <a href="#">Gizlilik Sözleşmesi</a>
+                                   <a href="#">İletişim</a>
+                                   <a href="#">Eczane Bul!</a>
+                              </div>
+                         </div>
+                         <div class="col-md-2 col-sm-2 text-align-center">
+                              <div class="angle-up-btn"> 
+                                  <a href="#top" class="smoothScroll wow fadeInUp" data-wow-delay="1.2s"><i></i>↑</a>
+                              </div>
+                         </div>   
+                    </div>
+
+               </div>
+          </div>
+     </footer>
+<script>
+
+
+let a1 = document.getElementById('name1');
+a1.textContent= name1;
+let a2 = document.getElementById('name2');
+a2.textContent= name2;
+let a3 = document.getElementById('name3');
+a3.textContent= name3;
+let a15 = document.getElementById('loc1');
+a15.textContent= loc1;
+let a4 = document.getElementById('loc2');
+a4.textContent= loc2;
+let a5 = document.getElementById('loc3');
+a5.textContent= loc3;
+
+let a9 = document.getElementById('phone1');
+a9.href= phone1;
+let a10 = document.getElementById('phone2');
+a10.href= phone2;
+let a11 = document.getElementById('phone3');
+a11.href= phone3;
+let a12 = document.getElementById('distance1');
+a12.textContent= distance1;
+let a13 = document.getElementById('distance2');
+a13.textContent= distance2;
+let a14 = document.getElementById('distance3');
+a14.textContent= distance3;
+
+let a6 = document.getElementById('loc_url1');
+a6.href= loc_url1;
+let a7 = document.getElementById('loc_url2');
+a7.href= loc_url2;
+let a8 = document.getElementById('loc_url3');
+a8.href= loc_url3;
+
+</script>
+
+<script>
+     const button = document.getElementById('complaint');
+
+     button.addEventListener('click', function() {
+       const div = button.parentNode;
+       const paragraphs = div.getElementsByTagName('p');
+       const paragraphText = paragraphs[0].innerText;
+       sendErrorToServer(paragraphText);
+     });
+     
+     function sendErrorToServer(error) {
+       const request = new XMLHttpRequest();
+       request.open('POST', '/errors');
+       request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+       request.send(`error=${encodeURIComponent(error)}`);
+     }
+     
+
+</script>
+
+
+    <script>
+          if (navigator.geolocation) {
+         navigator.geolocation.getCurrentPosition(function(position) {
+           console.log("Konum bilgisi: ", position);
+         });
+       } else {
+         alert("Lütfen tarayıcınızın konum özelliğini açınız.");
+       }
+       </script>
+       
+ <script>
+    function showAlert() {
+          alert("Eczane'ye gitmeden önce arayarak teyit etmeyi unutmayın!");
+        }
+
+</script>
+
+     <!-- SCRIPTS -->
+     <script src="js/jquery.js"></script>
+     <script src="js/bootstrap.min.js"></script>
+     <script src="js/jquery.sticky.js"></script>
+     <script src="js/jquery.stellar.min.js"></script>
+     <script src="js/jquery.magnific-popup.min.js"></script>
+     <script src="js/magnific-popup-options.js"></script>
+     <script src="js/wow.min.js"></script>
+     <script src="js/smoothscroll.js"></script>
+     <script src="js/owl.carousel.min.js"></script>
+     <script src="js/custom.js"></script>
+
+</body>
+</html>
